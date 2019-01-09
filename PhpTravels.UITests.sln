@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.136
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PhpTravels.UITests", "PhpTravels.UITests\PhpTravels.UITests.csproj", "{E2FAD534-5C0D-40FE-ACF4-157CC4F3553C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PhpTravels.UITests.Components", "PhpTravels.UITests.Components\PhpTravels.UITests.Components.csproj", "{2748B2D1-8B18-4349-9022-545D19DF26D9}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E2FAD534-5C0D-40FE-ACF4-157CC4F3553C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E2FAD534-5C0D-40FE-ACF4-157CC4F3553C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E2FAD534-5C0D-40FE-ACF4-157CC4F3553C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E2FAD534-5C0D-40FE-ACF4-157CC4F3553C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2748B2D1-8B18-4349-9022-545D19DF26D9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2748B2D1-8B18-4349-9022-545D19DF26D9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2748B2D1-8B18-4349-9022-545D19DF26D9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2748B2D1-8B18-4349-9022-545D19DF26D9}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {7EBE8AFC-5531-4FDC-A163-03B330FB8ACF}
+	EndGlobalSection
+EndGlobal
