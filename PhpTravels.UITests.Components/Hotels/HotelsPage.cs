@@ -18,6 +18,9 @@ namespace PhpTravels.UITests.Components
             public Text<_> Name { get; private set; }
 
             public Text<_> Location { get; private set; }
+ 
+            [FindByTitle("Edit")]
+            public Link<HotelEditPage, _> Edit { get; private set; }
         }
     }
 }

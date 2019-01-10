@@ -54,6 +54,8 @@
     <Compile Include="Controls\RichTextEditor`1.cs" />
     <Compile Include="Hotels\HotelEditPage.cs" />
     <Compile Include="Hotels\HotelsPage.cs" />
+    <Compile Include="Hotels\RoomAddPage.cs" />
+    <Compile Include="Hotels\RoomPage.cs" />
     <Compile Include="LoginPage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

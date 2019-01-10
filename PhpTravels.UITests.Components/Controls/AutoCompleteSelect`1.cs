@@ -14,6 +14,7 @@ namespace PhpTravels.UITests.Components
         public Text<TOwner> SelectedText { get; private set; }
 
         [FindByClass("select2-results", ScopeSource = ScopeSource.Page)]
+      
         public UnorderedList<DropDownItem, TOwner> DropDownItems { get; private set; }
 
         protected override string GetValue()

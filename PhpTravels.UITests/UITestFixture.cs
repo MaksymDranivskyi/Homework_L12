@@ -24,6 +24,7 @@ namespace PhpTravels.UITests
             AtataContext.Current?.CleanUp();
         }
 
+        
         protected void LoginAsAdmin()
         {
             Go.To<LoginPage>().
@@ -31,5 +32,7 @@ namespace PhpTravels.UITests
                 Password.Set(AppConfig.Current.AdminPassword).
                 Login.Click();
         }
+
+        
     }
 }
