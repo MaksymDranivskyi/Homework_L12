@@ -14,7 +14,7 @@ namespace PhpTravels.UITests
         }
 
        
-        [Test]
+        [Test, Category("FirstTest")]
         [Order(1)]
 
         public void  Hotel_Add()
@@ -22,7 +22,7 @@ namespace PhpTravels.UITests
             HotelCreate();
         }    
           
-        [Test]
+        [Test, Category("SecondTest")]
         [Order(2)]
         public void Hotel_Edit()
         {
