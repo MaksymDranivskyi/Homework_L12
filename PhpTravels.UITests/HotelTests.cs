@@ -31,7 +31,7 @@ namespace PhpTravels.UITests
                 Hotels.Rows[x => x.Name == hotelName].Edit.ClickAndGo().
                 Location.Set("Washington").
                 Submit().
-           Hotels.Rows[x => x.Name == hotelName].Location.Should.Contain("Washingtons");
+           Hotels.Rows[x => x.Name == hotelName].Location.Should.Contain("Washington");
         }
 
         [Test]
