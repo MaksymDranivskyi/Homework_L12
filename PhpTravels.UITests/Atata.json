@@ -1,6 +1,6 @@
 {
   "driver": {
-    "type": "firefox",
+    "type": "chrome",
     "options": {
       "arguments": [ "start-maximized", "disable-infobars" ]
     }
