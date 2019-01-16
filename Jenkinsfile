@@ -1,5 +1,12 @@
-def  isFailed = false
 
+properties([
+	parameters([
+		string(name:'branchName', defaultValu: 'master', description: 'Branch to get the tests from')
+	])
+])
+def  isFailed = false
+def	branch = params.branchName
+currentBuild.description = "Branch: $branch"
 
 node('master') {
 	stage('Checkout')
