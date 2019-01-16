@@ -7,7 +7,7 @@ namespace PhpTravels.UITests.Components
     public class AutoCompleteSelect<TOwner> : EditableField<string, TOwner>
         where TOwner : PageObject<TOwner>
     {
-        [FindByClass("select2-focused", ScopeSource = ScopeSource.Page)]
+        [FindByClass("select2-input", ScopeSource = ScopeSource.Page)]
         public TextInput<TOwner> AssociatedInput { get; private set; }
 
         [FindByClass("select2-chosen")]
