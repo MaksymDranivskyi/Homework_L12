@@ -1,3 +1,6 @@
+def  isFailed = false
+
+
 node('master') {
 	stage('Checkout')
 	{
@@ -13,9 +16,19 @@ node('master') {
 	{
 	 bat '"C:/Program Files (x86)/Microsoft Visual Studio/2017/Community/MSBuild/15.0/Bin/MSBuild.exe" PhpTravels.UITests.sln'
 	}
+	
+	catchError{
+	isFailed = true
 	stage('Run Tests')
 	{
 	 bat '"E:/NUnit.Console-3.9.0/nunit3-console.exe" PhpTravels.UITests/bin/Debug/PhpTravels.UITests.dll'
+	}
+	isFailed = false
+	}
+	
+	stage('Reporting')
+	{
+		bat '"E:/NUnit.Console-3.9.0/nunit3-console.exe" PhpTravels.UITests/bin/Debug/PhpTravels.UITests.dll'
 	}
 
 
