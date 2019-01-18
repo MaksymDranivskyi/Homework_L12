@@ -13,7 +13,7 @@ def RunNUnitTests(String pathToDll, String condition, String reportName)
 {
     try
     {
-        bat "C:/Dev/NUnit.Console-3.9.0/nunit3-console.exe $pathToDll $condition --result=$reportName"
+        bat "E:/NUnit.Console-3.9.0/nunit3-console.exe $pathToDll $condition --result=$reportName"
     }
     finally
     {
