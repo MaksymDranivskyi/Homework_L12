@@ -59,9 +59,7 @@ catchError
             }
         }
     }
-	
-	
-	parallel FirstTest: {}, SecondTest: {}
+
     isFailed = false
 }
 
