@@ -13,15 +13,15 @@ namespace PhpTravels.UITests
             LoginAsAdmin();
         }
 
-       
+
         [Test, Category("FirstTest")]
         [Order(1)]
 
-        public void  Hotel_Add()
+        public void Hotel_Add()
         {
             HotelCreate();
-        }    
-          
+        }
+
         [Test, Category("SecondTest")]
         [Order(2)]
         public void Hotel_Edit()
@@ -36,6 +36,7 @@ namespace PhpTravels.UITests
 
         [Test]
         [Order(3)]
+        [Ignore("Skip test")]
         public void Hotel_Room_Add()
         {
 
