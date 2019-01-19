@@ -92,7 +92,7 @@ foreach ($Task in $TaskList) {
     if ($Task.ToLower() -eq 'copyartifacts')
     {
         $error.clear()
-            CopyBuildArtifacts "PhpTravels.UITests/bin/Debug" "$BuildArtifactsFolder"
+            CopyBuildArtifacts "$DebugFolder" "$BuildArtifactsFolder"
             if($error)
             {
                 Throw "An error occured while copying build artifacts."
