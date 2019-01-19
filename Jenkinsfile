@@ -6,7 +6,7 @@ properties([
 
 def isFailed = false
 def branch = params.branchName
-def buildArtifactsFolder = "C:/BuildPackagesFromPipeline/$BUILD_ID"
+def buildArtifactsFolder = "C:\BuildPackagesFromPipeline\$BUILD_ID"
 currentBuild.description = "Branch: $branch"
 
 def RunNUnitTests(String pathToDll, String condition, String reportName)
