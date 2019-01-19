@@ -38,14 +38,11 @@ node('master')
         powershell ".\\build.ps1 Build"
     }
 
-    stage('Copy Build Artifacts')
+    stage('Copy Artifacts')
     {
          powershell ".\\build.ps1 CopyArtifacts -BuildArtifactsFolder $buildArtifactsFolder"
     }
-	stage('Copy Artifacts')
-    {
-        bat "(robocopy PhpTravels.UITests/bin/Debug $buildArtifactsFolder /MIR /XO) ^& IF %ERRORLEVEL% LEQ 1 exit 0"
-    }
+	
 }
 
 catchError
