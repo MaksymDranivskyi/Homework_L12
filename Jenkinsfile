@@ -28,19 +28,19 @@ node('master')
 		git 'https://github.com/MaksymDranivskyi/Homework_L12.git'
     }
     
-    stage('Restore NuGet')
+		stage('Restore NuGet')
     {
-      bat '"E:/nuget.exe" restore PhpTravels.UITests.sln'
+       powershell ".\\build.ps1 RestorePackages"
     }
 
     stage('Build Solution')
     {
-        bat '"C:/Program Files (x86)/Microsoft Visual Studio/2017/Community/MSBuild/15.0/Bin/MSBuild.exe" PhpTravels.UITests.sln'
+        powershell ".\\build.ps1 Build"
     }
 
     stage('Copy Artifacts')
     {
-        bat "(robocopy PhpTravels.UITests/bin/Debug $buildArtifactsFolder /MIR /XO) ^& IF %ERRORLEVEL% LEQ 1 exit 0"
+         powershell ".\\build.ps1 CopyArtifacts -BuildArtifactsFolder $buildArtifactsFolder"
     }
 }
 
