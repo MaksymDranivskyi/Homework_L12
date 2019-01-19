@@ -65,7 +65,7 @@ Function CopyBuildArtifacts()
         [String] $DestinationFolder
 		
     )
-	Copy-Item $SourceFolder -Destination  $DestinationFolders -Recurse
+	Get-ChildItem -Path $SourceFolder -Recurse | Copy-Item  -Destination  $DestinationFolders -Recurse
     # Copy all files from $SourceFolder to $DestinationFolder
     #
     # Useful commands:
@@ -93,7 +93,7 @@ foreach ($Task in $TaskList) {
     if ($Task.ToLower() -eq 'copyartifacts')
     {
         $error.clear()
-            CopyBuildArtifacts "$DebugFolder" "$DebugFolder1"
+             CopyBuildArtifacts "src/PhpTravels.UITests/bin/Debug" "$BuildArtifactsFolder"
             if($error)
             {
                 Throw "An error occured while copying build artifacts."
