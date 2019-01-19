@@ -22,7 +22,6 @@ param
     [Parameter()]
     [String] $BuildArtifactsFolder
 )
-$BuildArtifactsFolder = "C:/BuildPackagesFromPipeline/$BUILD_ID"
 $NugetUrl = "https://dist.nuget.org/win-x86-commandline/latest/nuget.exe"
 $NugetExe = Join-Path $PSScriptRoot "nuget.exe"
 $MSBuildExe = "C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\MSBuild\15.0\Bin\MSBuild.exe" 
@@ -91,6 +90,6 @@ foreach ($Task in $TaskList) {
     }
     if ($Task.ToLower() -eq 'copyartifacts')
     {
-        CopyBuildArtifacts "$DebugFolder" "$BuildArtifactsFolder"
+        CopyBuildArtifacts "PhpTravels.UITests/bin/Debug" "$BuildArtifactsFolder"
     }
 }
