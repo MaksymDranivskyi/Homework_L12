@@ -65,7 +65,7 @@ catchError
     isFailed = false
 }
 
-node('master')
+node()
 {
     stage('Reporting')
     {
