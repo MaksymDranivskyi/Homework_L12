@@ -28,6 +28,7 @@ $MSBuildExe = "C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\MSB
 $Solution = Join-Path $PSScriptRoot "PhpTravels.UITests.sln"
 $NunitExe = "E:\NUnit.Console-3.9.0\nunit3-console.exe"
 $DebugFolder = Join-Path $PSScriptRoot "PhpTravels.UITests\bin\Debug"
+$DebugFolder1 = Join-Path $PSScriptRoot "PhpTravels.UITests\bin"
 
 # Define additional variables here (MSBuild path, etc.)
 
@@ -62,9 +63,9 @@ Function CopyBuildArtifacts()
         [String] $SourceFolder,
         [Parameter(Mandatory)]
         [String] $DestinationFolder
-		Copy-Item $SourceFolder Destination  $DestinationFolders -Recurse -Force
+		
     )
-
+	Copy-Item $SourceFolder Destination  $DestinationFolders -Recurse
     # Copy all files from $SourceFolder to $DestinationFolder
     #
     # Useful commands:
@@ -92,7 +93,7 @@ foreach ($Task in $TaskList) {
     if ($Task.ToLower() -eq 'copyartifacts')
     {
         $error.clear()
-            CopyBuildArtifacts "$DebugFolder" "$BuildArtifactsFolder"
+            CopyBuildArtifacts "$DebugFolder" "$DebugFolder1"
             if($error)
             {
                 Throw "An error occured while copying build artifacts."
