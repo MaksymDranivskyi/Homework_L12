@@ -6,7 +6,7 @@ properties([
 
 def isFailed = false
 def branch = params.branchName
-def buildArtifactsFolder = "C:/BuildPackagesFromPipeline/$BUILD_ID"
+def buildArtifactsFolder = "C:\\BuildPackagesFromPipeline\\$BUILD_ID"
 currentBuild.description = "Branch: $branch"
 
 def RunNUnitTests(String pathToDll, String condition, String reportName)
@@ -40,7 +40,7 @@ node('master')
 
     stage('Copy Artifacts')
     {
-         powershell ".\\build.ps1 CopyArtifacts -BuildArtifactsFolder "C:\BuildPackagesFromPipeline\$BUILD_ID""
+         powershell ".\\build.ps1 CopyArtifacts -BuildArtifactsFolder $buildArtifactsFolder"
     }
 	
 }
