@@ -27,7 +27,7 @@ $NugetExe = Join-Path $PSScriptRoot "nuget.exe"
 $MSBuildExe = "C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\MSBuild\15.0\Bin\MSBuild.exe" 
 $Solution = Join-Path $PSScriptRoot "PhpTravels.UITests.sln"
 $NunitExe = "E:\NUnit.Console-3.9.0\nunit3-console.exe"
-$DebugFolder = Join-Path $PSScriptRoot "\PhpTravels.UITests\bin\Debug"
+$DebugFolder = Join-Path $PSScriptRoot "PhpTravels.UITests\bin\Debug"
 
 # Define additional variables here (MSBuild path, etc.)
 
@@ -91,7 +91,7 @@ foreach ($Task in $TaskList) {
     if ($Task.ToLower() -eq 'copyartifacts')
     {
         $error.clear()
-            CopyBuildArtifacts "src/PhpTravels.UITests/bin/Debug" "$BuildArtifactsFolder"
+            CopyBuildArtifacts "$DebugFolder" "$BuildArtifactsFolder"
             if($error)
             {
                 Throw "An error occured while copying build artifacts."
