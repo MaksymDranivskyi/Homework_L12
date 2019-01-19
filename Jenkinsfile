@@ -40,7 +40,7 @@ node('master')
 
     stage('Copy Artifacts')
     {
-         powershell ".\\build.ps1 CopyArtifacts "C:\\Program Files (x86)\\Jenkins\\workspace\\Student Pipeline\\PhpTravels.UITests\\bin\\Debug" $buildArtifactsFolder"
+         powershell ".\\build.ps1 CopyArtifacts "C:\Program Files (x86)\Jenkins\workspace\Student Pipeline\PhpTravels.UITests\bin\Debug" $buildArtifactsFolder"
     }
 	
 }
