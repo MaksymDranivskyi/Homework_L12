@@ -23,7 +23,7 @@ param
     [String] $BuildArtifactsFolder
 )
 $NugetUrl = "https://dist.nuget.org/win-x86-commandline/latest/nuget.exe"
-$NugetExe =  Join-Path $PSScriptRoot "nuget.exe"
+$NugetExe =   Join-Path$PSScriptRoot"nuget.exe"
 $MSBuildExe =  '"C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\MSBuild\15.0\Bin\MSBuild.exe"'
 $Solution = Join-Path $PSScriptRoot "PhpTravels.UITests.sln"
 $NunitExe = "E:\NUnit.Console-3.9.0\nunit3-console.exe"
@@ -45,13 +45,13 @@ Function global:RestoreNuGetPackages()
 {
     DownloadNuGet
     Write-Output 'Restoring NuGet packages...'
-    Invoke-Expression " $NugetExe restore $Solution"
+    Invoke-Expression "$NugetExe restore $Solution"
 } 
 
 Function global:BuildSolution()
 {
     Write-Output "Building '$Solution' solution..."
-	Invoke-Expression  "$MSBuild $Solution"
+	Invoke-Expression "$MSBuild $Solution"
     # MSBuild.exe call here
 }
 
