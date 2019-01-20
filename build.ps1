@@ -41,7 +41,7 @@ Function global:DownloadNuGet()
     }
 }
 
-Function global:RestoreNuGetPackages()
+Function RestoreNuGetPackages()
 {
     DownloadNuGet
     
@@ -50,10 +50,10 @@ Function global:RestoreNuGetPackages()
 	
 } 
 
-Function global:BuildSolution()
+Function BuildSolution()
 {
-    Write-Output "Building '$Solution' solution..."
-	Invoke-Expression "&`"$MSBuild`" `"$Solution`""
+    Write-Output "Building  solution..."
+	Invoke-Expression "& $MSBuild `"$Solution`""
 	# MSBuild.exe call here
 }
 
