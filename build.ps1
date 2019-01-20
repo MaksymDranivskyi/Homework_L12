@@ -84,17 +84,27 @@ Function CopyBuildArtifacts()
 foreach ($Task in $TaskList) {
     if ($Task.ToLower() -eq 'restorepackages')
     {
+		$error.clear()
         RestoreNuGetPackages
+		if($error -or $LastExitCode -ne '0')
+		{
+		 Throw "RestoreNuGetPackages Error"
+		}
     }
     if ($Task.ToLower() -eq 'build')
     {
+		$error.clear()
         BuildSolution
+		if($error -Or $LastExitCode -ne '0')
+		{
+		 Throw "Build Error"
+		}
     }
     if ($Task.ToLower() -eq 'copyartifacts')
     {
         $error.clear()
              CopyBuildArtifacts "PhpTravels.UITests/bin/Debug" "$BuildArtifactsFolder"
-            if($error)
+            if($error -Or $LastExitCode -ne '0')
             {
                 Throw "An error occured while copying build artifacts."
             }
