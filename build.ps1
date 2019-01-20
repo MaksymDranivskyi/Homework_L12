@@ -37,7 +37,7 @@ Function global:DownloadNuGet()
     if (-Not (Test-Path $NugetExe)) 
     {
         Write-Output "Installing NuGet from $NugetUrl..."
-        Invoke-WebRequest " $NugetUrl  -OutFile $NugetExe  -ErrorAction Stop"
+        Invoke-WebRequest "&`"$NugetExe`"  -OutFile `"$Solution`"  -ErrorAction Stop"
     }
 }
 
@@ -88,7 +88,7 @@ foreach ($Task in $TaskList) {
     {
 		$error.clear()
         RestoreNuGetPackages
-		if($error -Or $LastExitCode -ne '0')
+		if($error -Or $LastExitCode -ne 0)
 		{
 		 Throw "RestoreNuGetPackages Error"
 		}
@@ -97,7 +97,7 @@ foreach ($Task in $TaskList) {
     {
 		$error.clear()
         BuildSolution
-		if($error -Or $LastExitCode -ne '0')
+		if($error -Or $LastExitCode -ne 0)
 		{
 		 Throw "Build Error"
 		}
@@ -106,7 +106,7 @@ foreach ($Task in $TaskList) {
     {
         $error.clear()
              CopyBuildArtifacts "PhpTravels.UITests/bin/Debug" "$BuildArtifactsFolder"
-            if($error -Or $LastExitCode -ne '0')
+            if($error -Or $LastExitCode -ne 0)
             {
                 Throw "An error occured while copying build artifacts."
             }
