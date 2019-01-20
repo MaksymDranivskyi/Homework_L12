@@ -73,7 +73,7 @@ node()
         unstash "TestResult2.xml"
 
         archiveArtifacts '*.xml'
-        nunit testResultsPattern: 'TestResult1.xml, TestResult2.xml'
+        nunit testResultsPattern: 'TestResult*.xml'
 
     }
 }
