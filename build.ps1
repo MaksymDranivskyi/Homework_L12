@@ -47,8 +47,8 @@ Function RestoreNuGetPackages()
 
 Function BuildSolution()
 {
-    Write-Output "Building '$Solution' solution..."
-	& $MSBuild $Solution /p:Configuration=$Configuration /p:Platform=$Platform
+    #Write-Output "Building '$Solution' solution..."
+	& $MSBuildExe $Solution /p:Configuration=$Configuration /p:Platform=$Platform
     # MSBuild.exe call here
 }
 
