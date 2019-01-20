@@ -65,7 +65,9 @@ Function CopyBuildArtifacts()
         [String] $DestinationFolder
 		
     )
-	Copy-Item  $SourceFolder -Destination  $DestinationFolder -Recurse
+	   Copy-item -Force -Recurse -Verbose $SourceFolder -Destination $DestinationFolder
+
+	#Copy-Item  $SourceFolder -Destination  $DestinationFolder -Recurse
     # Copy all files from $SourceFolder to $DestinationFolder
     #
     # Useful commands:
