@@ -4,14 +4,14 @@ param
 (
     [Parameter()]
     [String[]] $TaskList = @("RestorePackages", "Build", "CopyArtifacts"),
-    #[string] $OutputPath = Join-Path $PSScriptRoot "bin",
+    [string] $OutputPath = Join-Path $PSScriptRoot "bin\Debug",
     # Also add following parameters: 
     #   Configuration
     #   Platform
     #   OutputPath
 	[String] $Configuration = "Debug",
 	[string] $Platform = "Any CPU",
-	#[string]$platform,
+	
 	
 
     # And use these parameters inside BuildSolution function while calling for MSBuild.
@@ -42,13 +42,13 @@ Function RestoreNuGetPackages()
 {
     DownloadNuGet
     Write-Output 'Restoring NuGet packages...'
-    & $NugetExe restore $Solution
+    Invoke-Expression & $NugetExe restore $Solution
 } 
 
 Function BuildSolution()
 {
     #Write-Output "Building '$Solution' solution..."
-	& $MSBuildExe $Solution /p:Configuration=$Configuration /p:Platform=$Platform
+	Invoke-Expression & $MSBuildExe $Solution /p:Configuration=$Configuration /p:Platform=$Platform
     # MSBuild.exe call here
 }
 
@@ -101,7 +101,7 @@ foreach ($Task in $TaskList) {
     {
         $error.clear()
              CopyBuildArtifacts "PhpTravels.UITests/bin/Debug" "$BuildArtifactsFolder"
-            if($error)
+            if($error -Or $LastExitCode -ne 0)
             {
                 Throw "An error occured while copying build artifacts."
             }
