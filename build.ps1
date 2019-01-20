@@ -23,7 +23,7 @@ param
     # More info here: https://docs.microsoft.com/en-us/visualstudio/msbuild/common-msbuild-project-properties?view=vs-2017
 
     [Parameter()]
-    [String] $BuildArtifactsFolder
+    [String] $BuildArtifactsFolder = "C:\BuildArtifacts"
 )
 $NugetUrl = "https://dist.nuget.org/win-x86-commandline/latest/nuget.exe"
 $NugetExe = Join-Path $PSScriptRoot "nuget.exe"
