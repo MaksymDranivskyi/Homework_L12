@@ -3,14 +3,14 @@
 param
 (
     [Parameter()]
-    [String[]] $TaskList = @("RestorePackages", "Build", "CopyArtifacts"),
+    [String[]] $TaskList = @("RestorePackages", "Build", "CopyArtifacts","nunit"),
     #[string] $OutputPath = Join-Path $PSScriptRoot "bin",
     # Also add following parameters: 
     #   Configuration
     #   Platform
     #   OutputPath
 	[String] $Configuration = "Debug",
-	[string] $Platform = "Win32",
+	[string] $Platform = "Win64",
 	#[string]$platform,
 	
 
@@ -22,40 +22,37 @@ param
     [Parameter()]
     [String] $BuildArtifactsFolder
 )
+$BuildArtifactsFolder = Join-Path $PSScriptRoot "Artifacts"
 $NugetUrl = "https://dist.nuget.org/win-x86-commandline/latest/nuget.exe"
-$NugetExe =   Join-Path $PSScriptRoot "nuget.exe"
-$MSBuildExe =  '"C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\MSBuild\15.0\Bin\MSBuild.exe"'
+$NugetExe = Join-Path $PSScriptRoot "nuget.exe"
+$MSBuildExe = "C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\MSBuild\15.0\Bin\MSBuild.exe" 
 $Solution = Join-Path $PSScriptRoot "PhpTravels.UITests.sln"
-$NunitExe = "E:\NUnit.Console-3.9.0\nunit3-console.exe"
-$DebugFolder = Join-Path $PSScriptRoot "PhpTravels.UITests\bin\Debug"
-$DebugFolder1 = Join-Path $PSScriptRoot "PhpTravels.UITests\bin"
-
+#$NunitExe = "E:\NUnit.Console-3.9.0\nunit3-console.exe"
 # Define additional variables here (MSBuild path, etc.)
 
-Function global:DownloadNuGet()
+Function DownloadNuGet()
 {
     if (-Not (Test-Path $NugetExe)) 
     {
         Write-Output "Installing NuGet from $NugetUrl..."
-        Invoke-WebRequest "&`"$NugetExe`"  -OutFile `"$Solution`"  -ErrorAction Stop"
+        Invoke-WebRequest $NugetUrl -OutFile $NugetExe -ErrorAction Stop
     }
 }
 
 Function RestoreNuGetPackages()
 {
     DownloadNuGet
-    
-	Write-Output 'Restoring NuGet packages...'
-    Invoke-Expression "&`"$NugetExe`" restore `"$Solution`""
-	
+    Write-Output 'Restoring NuGet packages...'
+    Invoke-Expression "$NugetExe restore $Solution"
 } 
 
 Function BuildSolution()
 {
-    Write-Output "Building  solution..."
-	Invoke-Expression "$MSBuild &`"$Solution`""
-	# MSBuild.exe call here
+    Write-Output "Building '$Solution' solution..."
+	Invoke-Expression "$MSBuild $Solution"
+    # MSBuild.exe call here
 }
+
 
 Function CopyBuildArtifacts()
 {
@@ -65,9 +62,9 @@ Function CopyBuildArtifacts()
         [String] $SourceFolder,
         [Parameter(Mandatory)]
         [String] $DestinationFolder
-		
     )
 	Copy-Item  $SourceFolder -Destination   $DestinationFolder -Recurse
+
     # Copy all files from $SourceFolder to $DestinationFolder
     #
     # Useful commands:
@@ -86,29 +83,15 @@ Function CopyBuildArtifacts()
 foreach ($Task in $TaskList) {
     if ($Task.ToLower() -eq 'restorepackages')
     {
-		$error.clear()
         RestoreNuGetPackages
-		if($error -Or $LastExitCode -ne 0)
-		{
-		 Throw "RestoreNuGetPackages Error"
-		}
     }
     if ($Task.ToLower() -eq 'build')
     {
-		$error.clear()
         BuildSolution
-		if($error -Or $LastExitCode -ne 0)
-		{
-		 Throw "Build Error"
-		}
     }
     if ($Task.ToLower() -eq 'copyartifacts')
     {
-        $error.clear()
-             CopyBuildArtifacts "PhpTravels.UITests/bin/Debug" "$BuildArtifactsFolder"
-            if($error -Or $LastExitCode -ne 0)
-            {
-                Throw "An error occured while copying build artifacts."
-            }
+        CopyBuildArtifacts "PhpTravels.UITests/bin/Debug" "$BuildArtifactsFolder"
     }
+
 }
