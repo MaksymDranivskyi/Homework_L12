@@ -48,14 +48,14 @@ Function global:RestoreNuGetPackages()
     Invoke-Expression "$NugetExe restore $Solution"
 } 
 
-Function global: BuildSolution()
+Function global:BuildSolution()
 {
     Write-Output "Building '$Solution' solution..."
 	Invoke-Expression "$MSBuild $Solution"
     # MSBuild.exe call here
 }
 
-Function global: CopyBuildArtifacts()
+Function global:CopyBuildArtifacts()
 {
     param
     (
