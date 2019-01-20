@@ -4,12 +4,15 @@ param
 (
     [Parameter()]
     [String[]] $TaskList = @("RestorePackages", "Build", "CopyArtifacts"),
-    [string] $OutputPath = Join-Path $PSScriptRoot "PhpTravels.UITests\bin\Debug",
+	[Parameter()]
+    [string] $OutputPath = "PhpTravels.UITests\bin\Debug",
     # Also add following parameters: 
     #   Configuration
     #   Platform
     #   OutputPath
+	[Parameter()]
 	[String] $Configuration = "Debug",
+	[Parameter()]
 	[string] $Platform = "Any CPU",
 	
 	
@@ -62,7 +65,7 @@ Function CopyBuildArtifacts()
         [String] $DestinationFolder
 		
     )
-	Copy-Item $SourceFolder -Destination  $DestinationFolder -Recurse
+	Copy-Item  $SourceFolder -Destination  $DestinationFolder -Recurse
     # Copy all files from $SourceFolder to $DestinationFolder
     #
     # Useful commands:
