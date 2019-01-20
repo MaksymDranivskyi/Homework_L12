@@ -10,7 +10,7 @@ param
     #   Platform
     #   OutputPath
 	[String] $Configuration = "Debug",
-	[string] $Platform = "Win64",
+	[string] $Platform = "Win32",
 	#[string]$platform,
 	
 
