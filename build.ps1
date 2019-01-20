@@ -4,7 +4,7 @@ param
 (
     [Parameter()]
     [String[]] $TaskList = @("RestorePackages", "Build", "CopyArtifacts"),
-    [string] $OutputPath = Join-Path $PSScriptRoot "bin\Debug",
+    [string] $OutputPath = Join-Path $PSScriptRoot "PhpTravels.UITests\bin\Debug",
     # Also add following parameters: 
     #   Configuration
     #   Platform
@@ -100,7 +100,7 @@ foreach ($Task in $TaskList) {
     if ($Task.ToLower() -eq 'copyartifacts')
     {
         $error.clear()
-             CopyBuildArtifacts "PhpTravels.UITests/bin/Debug" "$BuildArtifactsFolder"
+             CopyBuildArtifacts "$OutputPath" "$BuildArtifactsFolder"
             if($error -Or $LastExitCode -ne 0)
             {
                 Throw "An error occured while copying build artifacts."
