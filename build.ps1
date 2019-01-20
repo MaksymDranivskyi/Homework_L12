@@ -42,13 +42,13 @@ Function RestoreNuGetPackages()
 {
     DownloadNuGet
     Write-Output 'Restoring NuGet packages...'
-    Invoke-Expression & $NugetExe restore $Solution
+   & $NugetExe restore $Solution
 } 
 
 Function BuildSolution()
 {
     #Write-Output "Building '$Solution' solution..."
-	Invoke-Expression & $MSBuildExe $Solution /p:Configuration=$Configuration /p:Platform=$Platform
+	 & $MSBuildExe $Solution /p:Configuration=$Configuration /p:Platform=$Platform
     # MSBuild.exe call here
 }
 
