@@ -45,7 +45,7 @@ Function RestoreNuGetPackages()
 {
     DownloadNuGet
     Write-Output 'Restoring NuGet packages...'
-    Invoke-Expression "$NugetExe restore $Solution"
+    Invoke-Expression $NugetExe restore $Solution
 } 
 
 Function BuildSolution()
