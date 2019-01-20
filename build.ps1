@@ -53,7 +53,7 @@ Function RestoreNuGetPackages()
 Function BuildSolution()
 {
     Write-Output "Building  solution..."
-	Invoke-Expression "& $MSBuild `"$Solution`""
+	Invoke-Expression "$MSBuild &`"$Solution`""
 	# MSBuild.exe call here
 }
 
