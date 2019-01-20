@@ -6,8 +6,7 @@ properties([
 
 def isFailed = false
 def branch = params.branchName
-def pathFirst = "C:/Program Files (x86)/Jenkins/workspace/Student Pipeline/PhpTravels.UITests/bin/Debug"
-def buildArtifactsFolder = "C:/BuildPackagesFromPipeline/$BUILD_ID"
+def buildArtifactsFolder = "C:\\BuildPackagesFromPipeline\\$BUILD_ID" 
 currentBuild.description = "Branch: $branch"
 
 def RunNUnitTests(String pathToDll, String condition, String reportName)
