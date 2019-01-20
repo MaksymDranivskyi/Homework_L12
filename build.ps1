@@ -4,7 +4,7 @@ param
 (
     [Parameter()]
     [String[]] $TaskList = @("RestorePackages", "Build", "CopyArtifacts","nunit"),
-    #[string] $OutputPath = Join-Path $PSScriptRoot "bin",
+    [string] $OutputPath = Join-Path $PSScriptRoot "bin",
     # Also add following parameters: 
     #   Configuration
     #   Platform
@@ -22,7 +22,7 @@ param
     [Parameter()]
     [String] $BuildArtifactsFolder
 )
-$BuildArtifactsFolder = Join-Path $PSScriptRoot "Artifacts"
+
 $NugetUrl = "https://dist.nuget.org/win-x86-commandline/latest/nuget.exe"
 $NugetExe = Join-Path $PSScriptRoot "nuget.exe"
 $MSBuildExe = "C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\MSBuild\15.0\Bin\MSBuild.exe" 
