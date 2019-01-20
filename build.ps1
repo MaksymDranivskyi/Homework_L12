@@ -44,15 +44,17 @@ Function global:DownloadNuGet()
 Function global:RestoreNuGetPackages()
 {
     DownloadNuGet
-    Write-Output 'Restoring NuGet packages...'
-    Invoke-Expression "& `"$NugetExe`" restore `"$Solution`""
+    
+	Write-Output 'Restoring NuGet packages...'
+    Invoke-Expression "&`"$NugetExe`" restore `"$Solution`""
+	
 } 
 
 Function global:BuildSolution()
 {
     Write-Output "Building '$Solution' solution..."
-	Invoke-Expression "& `"$MSBuild`" `"$Solution`""
-    # MSBuild.exe call here
+	Invoke-Expression "&`"$MSBuild`" `"$Solution`""
+	# MSBuild.exe call here
 }
 
 Function CopyBuildArtifacts()
@@ -86,7 +88,10 @@ foreach ($Task in $TaskList) {
     {
 		$error.clear()
         RestoreNuGetPackages
-		
+		if($error -Or $LastExitCode -ne '0')
+		{
+		 Throw "RestoreNuGetPackages Error"
+		}
     }
     if ($Task.ToLower() -eq 'build')
     {
