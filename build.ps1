@@ -104,7 +104,7 @@ foreach ($Task in $TaskList) {
     {
         $error.clear()
              CopyBuildArtifacts "$OutputPath" "$BuildArtifactsFolder"
-            if($error -Or $LastExitCode -ne 0)
+            if($error)
             {
                 Throw "An error occured while copying build artifacts."
             }
