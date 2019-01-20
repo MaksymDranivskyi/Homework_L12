@@ -45,13 +45,13 @@ Function global:RestoreNuGetPackages()
 {
     DownloadNuGet
     Write-Output 'Restoring NuGet packages...'
-    Invoke-Expression  "$NugetExe restore $Solution"
+    Invoke-  "& $NugetExe restore & $Solution"
 } 
 
 Function global:BuildSolution()
 {
     Write-Output "Building '$Solution' solution..."
-	Invoke-Expression  "$MSBuild $Solution"
+	Invoke-Expression  "& $MSBuild & $Solution"
     # MSBuild.exe call here
 }
 
