@@ -45,13 +45,13 @@ Function global:RestoreNuGetPackages()
 {
     DownloadNuGet
     Write-Output 'Restoring NuGet packages...'
-    Invoke-Expression "$NugetExe restore $Solution"
+    Invoke-Expression &"$NugetExe restore $Solution"
 } 
 
 Function global:BuildSolution()
 {
     Write-Output "Building '$Solution' solution..."
-	Invoke-Expression "$MSBuild $Solution"
+	Invoke-Expression &"$MSBuild $Solution"
     # MSBuild.exe call here
 }
 
@@ -65,7 +65,7 @@ Function CopyBuildArtifacts()
         [String] $DestinationFolder
 		
     )
-	Copy-Item $SourceFolder -Destination  $DestinationFolder -Recurse
+	Copy-Item & $SourceFolder -Destination  & $DestinationFolder -Recurse
     # Copy all files from $SourceFolder to $DestinationFolder
     #
     # Useful commands:
